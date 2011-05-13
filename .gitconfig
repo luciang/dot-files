@@ -1,0 +1,15 @@
+[color]
+	branch = auto
+	ui = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	grep = auto
+	pager = true
+
+[user]
+	name = Lucian Adrian Grijincu
+	email = lucian.grijincu@gmail.com
+
+[url "ssh://lgrijincu@git.gnome.org/git/"]
+	insteadof = gnome:
