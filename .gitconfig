@@ -13,3 +13,5 @@
 
 [url "ssh://lgrijincu@git.gnome.org/git/"]
 	insteadof = gnome:
+[core]
+	editor = emacs
