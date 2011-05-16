@@ -41,16 +41,16 @@ for FILE_PATH in `find ${SCRIPT_DIR} -maxdepth 1`; do
 
     # Skip if the $HOME file exists (unless forced)
     if [[ $FORCE -eq 0 && -e $HOME_PATH ]]; then
-	echo Skipping $FILE_PATH -- already exists
+	echo "Skip " $FILE_PATH -- already exists
 	continue
     fi
 
     # Let the user know the type of link (forced or normal)
     if [[ $FORCE -eq 1 && -e $HOME_PATH ]]; then
-	echo Forcebly linking $FILE_PATH to $HOME_PATH
+	echo "Force" $FILE_PATH to $HOME_PATH
 	rm -f $HOME_PATH
     else
-	echo Linking $FILE_PATH to $HOME_PATH
+	echo "Link " $FILE_PATH to $HOME_PATH
     fi
 
     ln -s $FILE_PATH $HOME_PATH
