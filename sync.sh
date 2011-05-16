@@ -42,7 +42,7 @@ for FILE in $(git ls-files); do
 
     # Skip if the $HOME file exists (unless forced)
     if [[ $FORCE -eq 0 && -e $HOME_PATH ]]; then
-	echo "Skip " $FILE_PATH -- already exists
+	echo "Skip " $FILE_PATH
 	continue
     fi
 
