@@ -10,17 +10,26 @@
 
 (add-hook 'c-mode-hook
           (lambda ()
+	    (flyspell-prog-mode)
 	    (setq indent-tabs-mode t)
 	    (c-set-style "linux-tabs-only")))
 
 
+(eval-after-load "ispell"
+      (setq ispell-dictionary "english"))
+(setq-default ispell-program-name "aspell")
 
-
-(flyspell-prog-mode)
+;(flyspell-prog-mode)
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . flyspell-mode))
 
 
-; http://stackoverflow.com/questions/5748814/how-does-one-disable-vc-git-in-emacs
-(remove-hook 'find-file-hooks 'vc-find-file-hook)
+; disable vc-git and all vc stuff (I don' use it)
+(setq vc-handled-backends 'nil)
 
 
+
+;; ========== Enable Line and Column Numbering ==========
+;; Show line-number in the mode line
+(line-number-mode 1)
+;; Show column-number in the mode line
+(column-number-mode 1)
