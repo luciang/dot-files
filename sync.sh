@@ -13,6 +13,7 @@ real_path () {
 }
 
 SCRIPT_DIR=$(real_path $0)
+SCRIPT_FILE=$(basename $0)
 FORCE=0
 PREFIX=$HOME
 
@@ -25,12 +26,12 @@ done
 
 PREFIX=${PREFIX%/}
 
-for FILE_PATH in `find ${SCRIPT_DIR} -maxdepth 1`; do
-    FILE=$(basename $FILE_PATH)
+for FILE in $(git ls-files); do
+    FILE_PATH=${SCRIPT_DIR}/$FILE
     HOME_PATH=$PREFIX/.${FILE}
     
-    # Don't link the directory (. is returned from find)
-    if [[ $FILE_PATH = $SCRIPT_DIR ]]; then
+    # Don't link this script (it's maintained in git)
+    if [[ $FILE = $SCRIPT_FILE ]]; then
 	continue
     fi
     
