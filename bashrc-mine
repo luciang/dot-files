@@ -1,3 +1,11 @@
+# google depot tools
+
+# google something needs depot_tools
+export PATH=$HOME/hack/build/depot_tools:$PATH
+
+
+
+
 make()
 {
     pathpat="(/[^/]*)+:[0-9]+"
@@ -7,3 +15,13 @@ make()
     /usr/bin/make "$@" 2>&1 | sed -E -e "/[Ee]rror[: ]/ s%$pathpat%$ccred&$ccend%g" -e "/[Ww]arning[: ]/ s%$pathpat%$ccyellow&$ccend%g"
     return ${PIPESTATUS[0]}
 }
+
+
+
+# GOLANG:
+# see http://golang.org/doc/install.html
+export PATH=$HOME/go/bin:$PATH
+export GOROOT=$HOME/go
+export GOARCH=386
+export GOOS=linux
+

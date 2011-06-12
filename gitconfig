@@ -13,5 +13,14 @@
 
 [url "ssh://lgrijincu@git.gnome.org/git/"]
 	insteadof = gnome:
+[url "ssh://git@github.com/luciang/"]
+	insteadof = me:
 [core]
 	editor = emacs
+[merge]
+	conflictstyle = diff3
+[sendemail]
+	smtpserver = smtp.gmail.com
+	smtpserverport = 587
+	smtpencryption = tls
+	smtpuser = lucian.grijincu@gmail.com

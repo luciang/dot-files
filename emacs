@@ -1,3 +1,5 @@
+;; -*- mode: Lisp; -*-
+
 ;; ========== Documentation/CodingStyle ==========
 (defun c-lineup-arglist-tabs-only (ignored)
   "Line up argument lists by tabs, not spaces"
@@ -13,15 +15,16 @@
             ;; Add kernel style
             (c-add-style
              "linux-tabs-only"
-             '("linux" (c-offsets-alist
-                        (arglist-cont-nonempty
-                         c-lineup-gcc-asm-reg
-                         c-lineup-arglist-tabs-only))))))
+             '("linux"
+	       (c-offsets-alist (arglist-cont-nonempty
+				 c-lineup-gcc-asm-reg
+				 c-lineup-arglist-tabs-only))))))
 
 (add-hook 'c-mode-hook
           (lambda ()
 	    (setq indent-tabs-mode t)
-	    (c-set-style "linux-tabs-only")))
+	    ;(c-set-style "linux-tabs-only")))
+	    (c-set-style "linux")))
 
 
 ;; ========== Generic ==========
@@ -66,4 +69,15 @@
 ;; ========== cscope ==========
 (require 'xcscope)
 (setq cscope-do-not-update-database t)
+(setq cscope-initial-directory "/home/gringo/hack/lns/lns-linux-2.6")
 
+
+; http://www.emacswiki.org/emacs/EightyColumnRule
+; whitespace mode has two interesting options you can set in variable whitespace-style:
+; - ‘lines’, will highlight lines that go beyond thw columnus limit defined in ‘whitespace-line-column’
+; - ‘lines-tail’, same as above but only the part that goes beyond the limit of ‘whitespace-line-column’ gets highlighted.
+; - ‘whitespace-line-column’ default value is 80.
+
+ (require 'whitespace)
+ (setq whitespace-style '(lines-tail trailing))
+ (global-whitespace-mode t)
